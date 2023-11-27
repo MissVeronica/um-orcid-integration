@@ -1,6 +1,6 @@
 # Ultimate Member - ORCID Integration
 
-## UM Predefined Field
+## UM Predefined Form Field
 1. https://imgur.com/a/6setePB
 2. User can enter either the 19 character ORCID code or the ORCID URL.
 3. The <code>orcid_id</code> field can be edited both from the Account page General Tab and the User Profile page.
