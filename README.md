@@ -14,6 +14,9 @@ None
 1. Use the "Say What?" plugin with text domain ultimate-member
 2. https://wordpress.org/plugins/say-what/
 
+## Updates
+1. Version 1.1.0 Fix for updating orcid_id from Account page without https://orcid.org/
+
 ## Installation
 1. Install by downloading the plugin ZIP file and install as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
 2. Activate the Plugin: Ultimate Member - ORCID Integration
