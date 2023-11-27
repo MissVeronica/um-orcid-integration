@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - ORCID Integration
  * Description:     Extension to Ultimate Member for ORCID integration.
- * Version:         1.0.0
+ * Version:         1.1.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -25,6 +25,7 @@ class UM_Orcid_Integration {
         add_filter( 'um_predefined_fields_hook',                  array( $this, 'custom_predefined_fields_hook_orcid' ), 10, 1 );
         add_filter( 'um_account_tab_general_fields',              array( $this, 'um_account_tab_general_fields_orcid' ), 10, 1 );
         add_action( 'um_submit_account_errors_hook',              array( $this, 'um_submit_account_general_tab_errors_orcid' ), 10, 1 );
+        add_filter( 'um_account_pre_updating_profile_array',      array( $this, 'um_account_pre_updating_profile_array_orcid' ), 10, 1 );
     }
 
     public function custom_admin_field_validation_hook( $array ) {
@@ -107,6 +108,19 @@ class UM_Orcid_Integration {
         }
     }
 
+    public function um_account_pre_updating_profile_array_orcid( $changes ) {
+
+        if ( isset( $changes['orcid_id'] ) && ! empty( $changes['orcid_id'] )) {
+
+            if ( substr( $changes['orcid_id'], 0, 18 ) != UM()->builtin()->predefined_fields['orcid_id']['match'] ) {
+                $changes['orcid_id'] = UM()->builtin()->predefined_fields['orcid_id']['match'] . $changes['orcid_id'];
+            }
+        }
+
+        return $changes;
+    }
+
 }
 
 new UM_Orcid_Integration();
+
