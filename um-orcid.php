@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - ORCID Integration
  * Description:     Extension to Ultimate Member for ORCID integration.
- * Version:         1.1.0
+ * Version:         1.2.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -113,7 +113,9 @@ class UM_Orcid_Integration {
         if ( isset( $changes['orcid_id'] ) && ! empty( $changes['orcid_id'] )) {
 
             if ( substr( $changes['orcid_id'], 0, 18 ) != UM()->builtin()->predefined_fields['orcid_id']['match'] ) {
-                $changes['orcid_id'] = UM()->builtin()->predefined_fields['orcid_id']['match'] . $changes['orcid_id'];
+                if ( strlen( $changes['orcid_id'] ) == 19 ) {
+                    $changes['orcid_id'] = UM()->builtin()->predefined_fields['orcid_id']['match'] . $changes['orcid_id'];
+                }
             }
         }
 
